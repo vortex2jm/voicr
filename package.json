@@ -1,0 +1,14 @@
+{
+  "name": "voicr",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Motor de cálculo algorítmico de voicings e visualizador interativo em Rust + WebAssembly",
+  "scripts": {
+    "build:wasm": "cargo build --manifest-path crates/fret-wasm/Cargo.toml --target wasm32-unknown-unknown --release && wasm-bindgen --target bundler --out-dir web/src/wasm target/wasm32-unknown-unknown/release/fret_wasm.wasm",
+    "dev": "npm run build:wasm && npm --prefix web run dev",
+    "dev:web": "npm --prefix web run dev",
+    "build": "npm run build:wasm && npm --prefix web run build",
+    "preview": "npm --prefix web run preview",
+    "test:rust": "cargo test --workspace"
+  }
+}
